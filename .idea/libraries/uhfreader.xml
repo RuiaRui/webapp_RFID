@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="uhfreader">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../RFID设备管理系统/RFID设备管理系统-欧阳俊/RFID设备管理系统/所有程序和论文/EPCWrite/libs/uhfreader.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

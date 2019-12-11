@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="ch">
+
+<head>
+	<title>EPC码管理</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/vendor/font-awesome/css/font-awesome.min.css"> 
+	<link rel="stylesheet" href="assets/vendor/linearicons/style.css">
+	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist-custom.css">
+	<!-- MAIN CSS -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/css/PopBoxDialog.css">
+	<!-- ICONS -->
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+</head>
+
+<body>
+	<!-- WRAPPER -->
+	<div id="wrapper">
+		<!-- NAVBAR -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="navbar-form navbar-left">
+				<a href="index.html">
+					<h4>RFID管理系统</h4>
+				</a>
+				
+			</div>
+			<div class="container-fluid">
+				<form class="navbar-form navbar-right">
+					<div class="input-group">
+						<input type="text" value="" class="form-control" placeholder="Search dashboard...">
+						<span class="input-group-btn"><button type="button" class="btn btn-primary">Go</button></span>
+					</div>
+				</form>
+				<div id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
+								<i class="lnr lnr-alarm"></i>
+								<span class="badge bg-danger">5</span>
+							</a>
+							<ul class="dropdown-menu notifications">
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
+								<li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
+								<li><a href="#" class="more">See all notifications</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="lnr lnr-question-circle"></i> <span>Help</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Basic Use</a></li>
+								<li><a href="#">Working With Data</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Troubleshooting</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
+								<li><a href="#"><i class="lnr lnr-cog"></i> <span>Settings</span></a></li>
+								<li><a href="#"><i class="lnr lnr-exit"></i> <span>Logout</span></a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- END NAVBAR -->
+		<!-- LEFT SIDEBAR -->
+		<div id="sidebar-nav" class="sidebar">
+			<div class="sidebar-scroll">
+				<nav>
+					<ul class="nav">
+						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
+						<li>
+							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-license"></i> <span>EPC管理</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+							<div id="subPages" class="collapse ">
+								<ul class="nav">
+									<li><a href="showAllEPC.html" class="">产品注册</a></li>
+									<li><a href=showEPCStatus.html class="active">EPC修改</a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="showProduct.html" class=""><i class="lnr lnr-tag"></i> <span>QR管理</span></a></li>
+						<li><a href="" class=""><i class="lnr lnr-store"></i> <span>库位管理</span></a></li>
+						<li><a href="TagPosition.html" class=""><i class="lnr lnr-eye"></i> <span>RFID实时监控</span></a></li>
+						<li><a href="TagStatus.html" class=""><i class="lnr  lnr-chart-bars"></i><span>RFID盘点</span></a></li>
+						
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<!-- END LEFT SIDEBAR -->
+		<!-- MAIN -->
+		<div class="main">
+			<!-- MAIN CONTENT -->
+			<div class="main-content">
+				<div class="container-fluid">
+					<div class="panel">
+						<form id="form1">
+							<input type="hidden" name="">
+						</form>
+						<div class="panel-heading">
+							<h3 class="panel-title">EPC 清单</h3>
+						</div>
+
+						<div class="panel-body">
+							<button type="button" class="btn btn-primary" style="float:right" onclick="popN()" >添加EPC码</button>
+							<table class="table table-striped" id="display">
+								<thead>
+								<tr>
+									<th>EPC</th>
+									<th>状态</th>
+									<th>操作</th>
+								</tr>
+								</thead>
+
+
+							</table>
+						</div>
+
+					</div>
+					<div class="panel" id="PopBox-m">
+						<div class="panel-heading">
+							<h2 class="panel-title">EPC码更新</h2>
+						</div>
+						<div class="panel-body" >
+							<p>旧EPC码</p>
+							<lable type="text" name="oldEPC"id="oldEPC"></lable>
+							<br>
+							<br>
+							<p>新EPC码 *</p>
+							<input type="text" class="form-control" placeholder="请输入新的EPC码" name="newEPC"id="newEPC">
+							<br>
+							<p>密码</p>
+							<input type="text" class="form-control" placeholder="初始密码为0000" name="pwd" id="pwd">
+							<br>
+							<p>标签码长度</p>
+							<input type="text" class="form-control" placeholder="标签码长度" id="epcLength">
+							<br>
+							<p>标签码开始位置</p>
+							<input type="text" class="form-control" placeholder="标签码位置" id="startAddress">
+							<br>
+							<br>
+							<button class="btn btn-primary" id="sender" >提交</button>
+							<button class="btn btn-primary" id="btn-close">关闭</button>
+						</div>
+
+					</div>
+
+					<div class="panel" id="PopBox-n">
+						<div class="panel-heading">
+							<h2 class="panel-title">添加EPC码</h2>
+						</div>
+						<div class="panel-body" >
+							<p>新EPC码 *</p>
+							<input type="text" class="form-control" placeholder="请输入新的EPC码" name="newEPC"id="EPCN">
+							<br>
+							<p>密码</p>
+							<input type="text" class="form-control" placeholder="初始密码为0000" name="pwd" id="pwdN">
+							<br>
+							<p>标签码长度</p>
+							<input type="text" class="form-control" placeholder="标签码长度" id="epcLengthN">
+							<br>
+							<p>标签码开始位置</p>
+							<input type="text" class="form-control" placeholder="标签码位置" id="startAddressN">
+							<br>
+							<br>
+							<button class="btn btn-primary" id="senderN" >提交</button>
+							<button class="btn btn-primary" id="btn-closeN">关闭</button>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<!-- END MAIN CONTENT -->
+		</div>
+		<!-- END MAIN -->
+		<div class="clearfix"></div>
+		
+	</div>
+	<!-- END WRAPPER -->
+	<!-- Javascript -->
+	<script src="assets/vendor/jquery/jquery.min.js"></script>
+	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!--	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>-->
+<!--	<script src="assets/vendor/chartist/js/chartist.min.js"></script>-->
+	<script src="assets/scripts/klorofil-common.js"></script>
+	<script>
+		function popM(id){
+			$("body").append("<div class='mask'></div>");
+			$(".mask").fadeIn("slow");
+			$("#oldEPC").text(id);
+			$("#PopBox-m").fadeIn("slow");
+
+		}
+
+		function popN() {
+			$("body").append("<div class='mask'></div>");
+			$(".mask").fadeIn("slow");
+			$("#PopBox-n").fadeIn("slow");
+
+		}
+	</script>
+	<script>
+
+		$(document).ready(function() {
+			$.ajax({
+				type: "POST",//方法类型
+				dataType: "json",//预期服务器返回的数据类
+				url: "ShowEPCStatus" ,//url
+				data: $('#form1').serialize(),
+				success: function (result) {
+					var Products=result.products;
+					var num=result.number.number;
+					var str="";
+					str+="<tbody>";
+					for(var i=0;  i <num; i++){
+						str+="<tr>";
+						str+="<td>"+Products[i].EPC+"</td>";
+						if(Products[i].status==1){
+							str+="<td> 已绑定 </td>";
+						}else{
+							str+="<td> 未绑定 </td>";
+						}
+
+						str+="<td><button type='button'class='btn btn-primary btn-sm btn-pop'  onclick='popM(this.id)' id='"+Products[i].EPC+"'>修改EPC码</button></td>";
+						str+="</tr>";
+					}
+					str+="</tbody>";
+					$("#display").append(str);
+
+				}
+			});
+
+
+		});
+		$(function(){
+			$("#btn-close").on('click', function () {
+				$("#PopBox-m").fadeOut("fast");
+				$(".mask").css({ display: 'none'});
+			});
+
+			$("#btn-closeN").on('click', function () {
+				$("#PopBox-n").fadeOut("fast");
+				$(".mask").css({ display: 'none'});
+			});
+
+			$("#sender").on('click',function () {
+				var oldEPC = $('#oldEPC').text();
+				var newEPC = document.getElementById('newEPC').value;
+				var pwd = document.getElementById('pwd').value;
+				var epcLength = document.getElementById('epcLength').value;
+				var startAddress = document.getElementById('startAddress').value;
+				var product = {
+					"oldEPC": oldEPC,
+					"newEPC": newEPC,
+					"pwd": pwd,
+					"epcLength": epcLength,
+					"startAddress": startAddress
+				};
+				var url = "EPCModify";
+				$.ajax({
+					url: url,
+					type: "POST",
+					data: JSON.stringify(product),
+					datatype: "json",
+					success: function (data) {
+						alert(data);
+						window.location.reload()
+					}
+				});
+			});
+			$("#senderN").on('click',function () {
+				var EPCN = document.getElementById('EPCN').value;
+				var pwdN = document.getElementById('pwdN').value;
+				var epcLengthN = document.getElementById('epcLengthN').value;
+				var startAddressN = document.getElementById('startAddressN').value;
+				var epcNew = {"EPCN": EPCN, "pwdN": pwdN, "epcLengthN": epcLengthN, "startAddressN": startAddressN};
+				var url = "EPCAdd";
+				$.ajax({
+					url: url,
+					type: "POST",
+					data: JSON.stringify(epcNew),
+					datatype: "json",
+					success:function(data){
+						alert(data);
+						window.location.reload()
+					}
+				});
+
+			});
+
+		});
+
+
+
+
+	</SCRIPT>
+</body>
+
+</html>

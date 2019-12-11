@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//ibatis.apache.org//DTD Config 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <!-- 别名定义 -->
+        <!-- 针对单个别名定义 type：类型的路径 alias：别名 -->
+        <!-- 批量别名定义 指定包名，mybatis自动扫描包中的po类，自动定义别名，别名就是类名（首字母大写或小写都可以） -->
+        <!--<package productName="cn.com.mybatis.mapper" />-->
+        <!--注：package关键字在此文件中无法正常使用，原因不明-->
+    </typeAliases>
+
+    <environments default="environment">
+        <environment id="environment">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+
+                <!-- ?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8 -->
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/demo?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8 " />
+                <property name="username" value="root" />
+                <property name="password" value="123456" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="dao/mapper/ProductMapper.xml"/>
+
+    </mappers>
+</configuration>

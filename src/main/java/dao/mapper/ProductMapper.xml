@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.mapper.ProductMapper">
+
+
+
+    <delete id="deleteProduct">
+        DELETE FROM product
+        WHERE productID=#{productID}
+    </delete>
+
+    <update id="writeProduct" parameterType="vo.Product">
+        update product
+        set productID=#{productID}, productName=#{productName}, entryDate=#{entryDate}, leftDate=#{leftDate}
+        where EPC=#{EPC}
+    </update>
+
+    <select id="selectProduct" resultType="vo.Product">
+        select*
+        from product
+        where productID=#{productID}
+    </select>
+
+    <select id="selectAllProduct" resultType="vo.Product">
+        select * from product;
+    </select>
+    
+    <insert id="addEPC" >
+        insert into product
+        (EPC)
+        VALUES
+        (#{EPC})
+    </insert>
+
+
+    <update id="alterEPC">
+         UPDATE product
+         SET EPC = #{newEPC}
+         WHERE (EPC = #{oldEPC});
+
+    </update>
+
+
+</mapper>
+

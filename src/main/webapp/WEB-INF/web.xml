@@ -1,0 +1,80 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>Archetype Created Web Application</display-name>
+
+  <servlet>
+    <servlet-name>EPCWrite</servlet-name>
+    <servlet-class>ctrl.EPCWriteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EPCWrite</servlet-name>
+    <url-pattern>/EPCWrite</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet>
+    <servlet-name>ShowEPC</servlet-name>
+    <servlet-class>ctrl.ShowEPCServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowEPC</servlet-name>
+    <url-pattern>/ShowEPC</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+  <servlet-name>ShowEPCStatus</servlet-name>
+  <servlet-class>ctrl.EPCStatusServlet</servlet-class>
+</servlet>
+  <servlet-mapping>
+    <servlet-name>ShowEPCStatus</servlet-name>
+    <url-pattern>/ShowEPCStatus</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EPCAdd</servlet-name>
+    <servlet-class>ctrl.EPCAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EPCAdd</servlet-name>
+    <url-pattern>/EPCAdd</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EPCModify</servlet-name>
+    <servlet-class>ctrl.EPCModifyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EPCModify</servlet-name>
+    <url-pattern>/EPCModify</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TagStatus</servlet-name>
+    <servlet-class>ctrl.TagStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TagStatus</servlet-name>
+    <url-pattern>/TagStatus</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>TagPosition</servlet-name>
+    <servlet-class>ctrl.TagPositionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TagPosition</servlet-name>
+    <url-pattern>/TagPosition</url-pattern>
+  </servlet-mapping>
+
+
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+</web-app>
